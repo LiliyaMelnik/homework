@@ -14,11 +14,7 @@ public class Car {
     }
     public void setModel(String model) {
         if (model == "" || model == "no model") {
-            try {
-                throw new ModelException ("Unsupported model");
-            } catch (ModelException ex) {
-                System.out.println("We catch model exception");
-            }
+            throw new ModelException ("Unsupported model");
         }
         this.model = model;
     }
@@ -27,11 +23,7 @@ public class Car {
     }
     public void setYear(int year) {
         if (year < 1990 || year > 2023) {
-            try {
-                throw new YearException("Invalid year");
-            } catch (YearException exc) {
-                System.out.println("We catch year exception");
-            }
+            throw new YearException("Invalid year");
         }
         this.year = year;
     }

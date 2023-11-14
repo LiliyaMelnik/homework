@@ -1,4 +1,6 @@
 import car.Car;
+import car.ModelException;
+import car.YearException;
 
 import java.util.ArrayList;
 
@@ -8,14 +10,25 @@ public class Main {
         task2();
         task3();
     }
-
     public static void task1() {
         System.out.println("-------------------------TASK1");
         Car a = new Car();
         a.setModel("ht1"); // ok
-        a.setModel(""); // not ok
         a.setYear(2020); // ok
-        a.setYear(2025); // not ok
+        try {
+            a.setModel(""); // not ok
+        } catch (ModelException ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            System.out.println("try wrong model");
+        }
+        try {
+            a.setYear(2025); // not ok
+        } catch (YearException ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            System.out.println("try wrong year");
+        }
     }
     public static void task2() {
         System.out.println("-------------------------TASK2");
